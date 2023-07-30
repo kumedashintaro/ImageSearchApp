@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -35,6 +36,7 @@ fun PhotoThumbnail(
             .clickable { onClick(photo) },
         contentAlignment = Alignment.BottomCenter
     ) {
+        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         AsyncImage(
             model = photo.imageUrl,
             contentDescription = photo.description,
