@@ -1,7 +1,9 @@
 package com.example.imagesearchapp.presentation.search_photos
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.imagesearchapp.common.NetworkResponse
@@ -19,11 +21,13 @@ class SearchPhotoViewModel @Inject constructor(
     private val _state = mutableStateOf(SearchPhotosState())
     val state: State<SearchPhotosState> = _state
 
+    var query by mutableStateOf("programing")
+
     init {
-        searchPhotos("programing")
+        searchPhotos()
     }
 
-    fun searchPhotos(query: String) {
+    fun searchPhotos() {
         searchPhotosUseCase(query).onEach { result ->
             when (result) {
                 is NetworkResponse.Success -> {

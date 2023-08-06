@@ -20,9 +20,9 @@ fun SearchPhotoScreen(
 
     Scaffold(
         topBar = {
-            SearchBar(searchText = "",
-                onSearchTextChanged = {},
-                onDone = { /*TODO*/ })
+            SearchBar(searchText = viewModel.query,
+                onSearchTextChanged = { viewModel.query = it },
+                onDone = { viewModel.searchPhotos() })
         }
     ) { paddingValue ->
         LazyColumn(modifier = Modifier.padding(paddingValue)) {
